@@ -4,6 +4,7 @@ import ChatHeader from './ChatHeader';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { generateRPAResponse } from '@/utils/rpaService';
 
 interface Message {
   id: string;
@@ -16,7 +17,7 @@ const ChatContainer = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m your Shell Assistant. I can help you with information about Shell services, products, and general inquiries. How can I assist you today?',
+      text: 'Hello! I\'m your Shell RPA Assistant. I can help you with information about your RPA bots including status monitoring, performance analysis, scheduling patterns, and troubleshooting. What would you like to know about your automation processes?',
       isUser: false,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
@@ -37,17 +38,6 @@ const ChatContainer = () => {
     scrollToBottom();
   }, [messages]);
 
-  const generateBotResponse = (userMessage: string): string => {
-    const responses = [
-      "Thank you for your question. As your Shell Assistant, I'm here to help with any Shell-related inquiries.",
-      "That's a great question! Shell is committed to providing excellent service and innovative energy solutions.",
-      "I appreciate you reaching out. Shell offers a wide range of products and services to meet your energy needs.",
-      "Thank you for contacting Shell. We're dedicated to powering progress together with our customers.",
-      "I'm here to assist you with Shell services. Is there anything specific you'd like to know about our offerings?"
-    ];
-    return responses[Math.floor(Math.random() * responses.length)];
-  };
-
   const handleSendMessage = async (messageText: string) => {
     const newUserMessage: Message = {
       id: Date.now().toString(),
@@ -63,7 +53,7 @@ const ChatContainer = () => {
     setTimeout(() => {
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: generateBotResponse(messageText),
+        text: generateRPAResponse(messageText),
         isUser: false,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };

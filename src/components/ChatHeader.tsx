@@ -12,8 +12,8 @@ const ChatHeader = () => {
         />
       </div>
       <div>
-        <h1 className="text-xl font-bold">Shell Assistant</h1>
-        <p className="text-shell-yellow text-sm">How can I help you today?</p>
+        <h1 className="text-xl font-bold">Shell RPA Assistant</h1>
+        <p className="text-shell-yellow text-sm">Your automation intelligence companion</p>
       </div>
       <div className="ml-auto">
         <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
